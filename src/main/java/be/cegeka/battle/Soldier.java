@@ -31,13 +31,13 @@ public class Soldier {
     }
 
     public Soldier attack(Soldier defender) {
-        if (getDamage() >= defender.getDamage()){
-            return this;
+        if (this.equals(defender)) {
+            throw new IllegalArgumentException();
         }
-        return defender;
+        return getWeaponDamage() >= defender.getWeaponDamage() ? this : defender;
     }
 
-    private int getDamage() {
+    private int getWeaponDamage() {
         return weapon.getDamage();
     }
 }

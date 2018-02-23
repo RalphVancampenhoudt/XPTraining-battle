@@ -6,6 +6,7 @@ import java.util.List;
 public class Army {
 
     private List<Soldier> soldiers;
+
     public Army() {
         this.soldiers = new ArrayList<Soldier>();
     }
@@ -15,6 +16,9 @@ public class Army {
     }
 
     public void addSoldier(Soldier soldier) {
+        if (soldiers.contains(soldier)) {
+            throw new IllegalArgumentException();
+        }
         soldiers.add(soldier);
     }
 

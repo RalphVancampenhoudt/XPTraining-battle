@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.axes.AxesWalker;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class SoldierTest {
 
@@ -78,6 +79,13 @@ public class SoldierTest {
     }
 
     @Test
+    public void ifSoldierFightsHimself_throwIllegalArgumentException() throws Exception {
+        Soldier soldier1 = new Soldier("soldier1");
+
+        assertThatThrownBy(() -> soldier1.attack(soldier1)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
     public void WhenNewArmmyCreated_ArmyIsEmpty() throws Exception {
         Army army = new Army();
         assertThat(army.getSoldiers()).isEmpty();
@@ -92,4 +100,16 @@ public class SoldierTest {
         army.addSoldier(soldier2);
         assertThat(army.getFrontMan()).isEqualTo(soldier1);
     }
+
+    @Test
+    public void soldierCanOnlyBeAddedOnceToAnArmy() throws Exception {
+        Army army = new Army();
+        Soldier soldier1 = new Soldier("b");
+
+        army.addSoldier(soldier1);
+
+        assertThatThrownBy(() -> army.addSoldier(soldier1)).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    //TODO: edge cases
 }
