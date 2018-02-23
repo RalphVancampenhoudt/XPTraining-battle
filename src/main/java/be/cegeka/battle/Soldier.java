@@ -17,4 +17,6 @@ public class Soldier {
     String getName() {
         return this.name;
     }
+
+    //adding
 }
