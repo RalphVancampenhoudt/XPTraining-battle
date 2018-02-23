@@ -53,4 +53,31 @@ public class SoldierTest {
 
         assertThat(winner).isEqualTo(attacker);
     }
+
+    @Test
+    public void attack_ifSoldierWithBareFist_attackSoldierWithLessPowerfullWeaponAttackerWins(){
+        Soldier attacker = new Soldier("attacker");
+        attacker.setWeapon(new Axe());
+        Soldier defender = new Soldier("defender");
+        defender.setWeapon(new Spear());
+
+        Soldier winner = attacker.attack(defender);
+
+        assertThat(winner).isEqualTo(attacker);
+    }
+
+    @Test
+    public void attack_ifSoldierWithBareFist_attackSoldierWithMorePowerfullWeaponDefenderWins(){
+        Soldier attacker = new Soldier("attacker");
+        Soldier defender = new Soldier("defender");
+        defender.setWeapon(new Sword());
+
+        Soldier winner = attacker.attack(defender);
+
+        assertThat(winner).isEqualTo(defender);
+    }
+
+    @Test
+    public void name() throws Exception {
+    }
 }

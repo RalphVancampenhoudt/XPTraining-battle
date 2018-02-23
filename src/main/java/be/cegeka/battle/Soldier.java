@@ -31,9 +31,13 @@ public class Soldier {
     }
 
     public Soldier attack(Soldier defender) {
-        if (weapon.getDamage() >= defender.getWeapon().getDamage()){
+        if (getDamage() >= defender.getDamage()){
             return this;
         }
         return defender;
+    }
+
+    private int getDamage() {
+        return weapon.getDamage();
     }
 }
