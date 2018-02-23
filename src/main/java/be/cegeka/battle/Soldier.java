@@ -23,7 +23,17 @@ public class Soldier {
         return weapon;
     }
 
-    public void setWeapon(Sword weapon) {
+    public void setWeapon(Weapon weapon) {
+        if (weapon == null){
+            throw new IllegalArgumentException("every soldier must have a weapon");
+        }
         this.weapon = weapon;
+    }
+
+    public Soldier attack(Soldier defender) {
+        if (weapon.getDamage() >= defender.getWeapon().getDamage()){
+            return this;
+        }
+        return defender;
     }
 }

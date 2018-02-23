@@ -42,6 +42,15 @@ public class SoldierTest {
 
         soldier.setWeapon(new Sword());
         assertThat(soldier.getWeapon()).isInstanceOf(Sword.class);
+    }
 
+    @Test
+    public void attack_ifSoldierWithBareFist_attackSoldierWithSameWeaponAttackerWins(){
+        Soldier attacker = new Soldier("attacker");
+        Soldier defender = new Soldier("defender");
+
+        Soldier winner = attacker.attack(defender);
+
+        assertThat(winner).isEqualTo(attacker);
     }
 }
