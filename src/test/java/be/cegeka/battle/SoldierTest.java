@@ -1,5 +1,6 @@
 package be.cegeka.battle;
 
+import com.sun.org.apache.xpath.internal.axes.AxesWalker;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,4 +29,19 @@ public class SoldierTest {
         new Soldier("   ");
     }
 
+    @Test
+    public void getWeapon_returnsBareFist() throws Exception {
+        Soldier soldier = new Soldier("vandamme");
+
+        assertThat(soldier.getWeapon()).isInstanceOf(BareFist.class);
+    }
+
+    @Test
+    public void setWeapon_givenSword_soldierWeaponIsSword() throws Exception {
+        Soldier soldier = new Soldier("vandamme");
+
+        soldier.setWeapon(new Sword());
+        assertThat(soldier.getWeapon()).isInstanceOf(Sword.class);
+
+    }
 }
