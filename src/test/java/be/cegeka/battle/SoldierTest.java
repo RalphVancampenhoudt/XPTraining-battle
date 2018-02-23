@@ -78,6 +78,18 @@ public class SoldierTest {
     }
 
     @Test
-    public void name() throws Exception {
+    public void WhenNewArmmyCreated_ArmyIsEmpty() throws Exception {
+        Army army = new Army();
+        assertThat(army.getSoldiers()).isEmpty();
+    }
+
+    @Test
+    public void givenArmyWithSoldiers_WhenAskedForFrontMan_ShouldReturnFirstEnlistedSoldier() throws Exception {
+        Army army = new Army();
+        Soldier soldier1 = new Soldier("b");
+        Soldier soldier2 = new Soldier("a");
+        army.addSoldier(soldier1);
+        army.addSoldier(soldier2);
+        assertThat(army.getFrontMan()).isEqualTo(soldier1);
     }
 }
